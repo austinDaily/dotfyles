@@ -1,4 +1,0 @@
--- add error handline for the "creating dotfyles directory" code (around line 15)
--- add error handling for the git init code (around line 20)
-
-

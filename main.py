@@ -9,15 +9,15 @@ args = parser.parse_args()
 
 # If the --init flag is passed, run the initialization code
 if args.init:
-    print('Creating the "dotfyles" directory...')
+    print('Creating the "myDotfyles" directory...')
 
-    # Create the "dotfyles" directory in users Home directory
-    os.makedirs(os.path.expanduser('~/dotfyles'), exist_ok=True)
+    # Create the "myDotfyles" directory in users Home directory
+    os.makedirs(os.path.expanduser('~/myDotfyles'), exist_ok=True)
     print('Done!')
 
-    # Intitialize the git repository in the "dotfyles" directory
+    # Intitialize the git repository in the "myDotfyles" directory
     print('Initializing the git repository...')
-    os.system('cd ~/dotfyles && git init > /dev/null 2>&1')
+    os.system('cd ~/myDotfyles && git init > /dev/null 2>&1')
     print('Done!')
 
     # List of config files and/or directories the program should search for
@@ -65,23 +65,23 @@ if args.init:
     print('Done!')
 
 
-    # For the configs that were found, copy (for files) or symlink (for directories) them to the "dotfyles" dir
+    # For the configs that were found, copy (for files) or symlink (for directories) them to the "myDotfyles" dir
     print('Copying/symlinking the config files...')
     for config in configs:
         if os.path.exists(os.path.expanduser(f'~/{config}')):
             if os.path.isfile(os.path.expanduser(f'~/{config}')):
-                os.system(f'cp ~/{config} ~/dotfyles/')
+                os.system(f'cp ~/{config} ~/myDotfyles/')
             else:
-                os.system(f'ln -s ~/{config} ~/dotfyles/')
+                os.system(f'ln -s ~/{config} ~/myDotfyles/')
     print('Done!')
 
     
     # Add/stage the copied/symlinked files to the git repository
     print('Staging the config files to the git repo...')
-    os.system('cd ~/dotfyles && git add . > /dev/null 2>&1')
+    os.system('cd ~/myDotfyles && git add . > /dev/null 2>&1')
     print('Done!')
 
     # Commit the staged files
     print('Committing the config files...')
-    os.system('cd ~/dotfyles && git commit -m "Initial commit" > /dev/null 2>&1')
+    os.system('cd ~/myDotfyles && git commit -m "Initial commit" > /dev/null 2>&1')
     print('Done!')

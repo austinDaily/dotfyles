@@ -1,5 +1,5 @@
 # Dotfyles - A CLI Dotfile Manager
-Dotfyles is a command-line tool that scans your Home directory for your important config files (or dotfiles), creates a dedicated directory and git repo for them, and pushes the repository to your GitHub account, **all with one command**. This makes it easy to back up, restore, and share your configuration files across different systems.
+Dotfyles is a command-line tool that scans your Home directory for your important config files (or dotfiles), creates a dedicated directory and git repo for them, and pushes this repository to your GitHub account, **all with one command**. This makes it easy to back up, restore, and share your configuration files across different systems.
 
 ## Features
 - **Automatic Collection of Dotfiles**: Gathers common configuration files from your home directory.
@@ -13,7 +13,7 @@ Dotfyles is a command-line tool that scans your Home directory for your importan
 - Python3
 - Git
 - A GitHub account.
-- Make sure your GitHub account does not already contain a repo called "dotfyles", as this program will overwrite it.
+- Make sure your GitHub account does not already contain a repo called "myDotfyles", as this program will overwrite it.
 
 ### Usage
 ```bash
