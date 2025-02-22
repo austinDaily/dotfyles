@@ -88,21 +88,26 @@ if args.init:
     os.system('cd ~/myDotfyles && git commit -m "Initial commit" > /dev/null 2>&1')
     print('Done!')
 
-    # Make sure the GH CLI is installed and the user is logged in.
-    # If not, prompt the user to install the GH CLI and log in.
-    # If the GH CLI is installed and the user is logged in, create a new repo called "myDotfyles"
-    # and push the local repo to the remote repo
+    # GitHub CLI Authentication and Repo Creation/Pushing
+    gh_username = input('Enter your GitHub username: ')
+
     print('Checking if the GH CLI is installed...')
     gh_installed = shutil.which('gh')
     if gh_installed:
         print('GH CLI is installed!')
         print('Checking if the user is logged in...')
         gh_login = subprocess.run(['gh', 'auth', 'status'], stdout=subprocess.PIPE)
+        
         if 'Logged in to github.com' in gh_login.stdout.decode('utf-8'):
             print('User is logged in!')
+
             print('Creating the remote repo...')
             os.system('cd ~/myDotfyles && gh repo create myDotfyles --public > /dev/null 2>&1')
             print('Done!')
+
+            print(' Adding remote origin...')
+            os.system(f'cd ~/myDotfyles && git remote add origin git@github.com:{gh_username}/myDotfyles.git')
+            
             print('Pushing the local repo to the remote repo...')
             os.system('cd ~/myDotfyles && git push origin master > /dev/null 2>&1')
             print('Done!')
