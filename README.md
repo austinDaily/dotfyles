@@ -26,8 +26,14 @@ sudo pacman -S github-cli
 gh auth login
 ```
 
+### Install
+```bash
+gh repo clone austinDaily/dotfyles
+```
+
 ### Usage
 ```bash
+cd ~/dotfyles
 dotfyles --init
 ```
 This command will create a git repo in your Home directory called "myDotfyles", scan your Home directory for important configuration files/dirs, copy/symlink them to the "myDotfyles" repo, stage and commit them to Git, and finally push them to your GitHub.
