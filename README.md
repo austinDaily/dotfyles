@@ -3,7 +3,7 @@ Dotfyles is a command-line tool that scans your Home directory for your importan
 
 ## Features
 - **Automatic Collection of Dotfiles**: Gathers common configuration files from your home directory.
-- **GitHub Integration**: Uses GitHub’s Device Flow for authentication and pushes the collected dotfiles to your GitHub repository.
+- **GitHub Integration**: Uses GitHub’s CLI for authentication
 - **Symbolic Linking**: Creates symbolic links to the original files, ensuring that your configurations stay in sync.
 - **Customizable**: Extend the list of dotfiles as needed to meet your setup requirements.
 
