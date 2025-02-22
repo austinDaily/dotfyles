@@ -1,5 +1,7 @@
 import argparse
 import os
+import shutil
+import subprocess
 
 # Create the CLI argument parser 
 parser = argparse.ArgumentParser(description='Initialize the project')
@@ -56,13 +58,13 @@ if args.init:
         ]
     
     # Check if the configs exist in the users Home directory
-    print('Checking if config files exist...')
-    for config in configs:
-        if os.path.exists(os.path.expanduser(f'~/{config}')):
-            print(f'Found {config}')
-        else:
-            print(f'{config} not found')
-    print('Done!')
+    #print('Checking if config files exist...')
+    #for config in configs:
+    #    if os.path.exists(os.path.expanduser(f'~/{config}')):
+    #        print(f'Found {config}')
+    #    else:
+    #        print(f'{config} not found')
+    #print('Done!')
 
 
     # For the configs that were found, copy (for files) or symlink (for directories) them to the "myDotfyles" dir
@@ -85,3 +87,32 @@ if args.init:
     print('Committing the config files...')
     os.system('cd ~/myDotfyles && git commit -m "Initial commit" > /dev/null 2>&1')
     print('Done!')
+
+    # Make sure the GH CLI is installed and the user is logged in.
+    # If not, prompt the user to install the GH CLI and log in.
+    # If the GH CLI is installed and the user is logged in, create a new repo called "myDotfyles"
+    # and push the local repo to the remote repo
+    print('Checking if the GH CLI is installed...')
+    gh_installed = shutil.which('gh')
+    if gh_installed:
+        print('GH CLI is installed!')
+        print('Checking if the user is logged in...')
+        gh_login = subprocess.run(['gh', 'auth', 'status'], stdout=subprocess.PIPE)
+        if 'Logged in to github.com' in gh_login.stdout.decode('utf-8'):
+            print('User is logged in!')
+            print('Creating the remote repo...')
+            os.system('cd ~/myDotfyles && gh repo create myDotfyles --public > /dev/null 2>&1')
+            print('Done!')
+            print('Pushing the local repo to the remote repo...')
+            os.system('cd ~/myDotfyles && git push origin master > /dev/null 2>&1')
+            print('Done!')
+        else:
+            print('User is not logged in. Please run "gh auth login" to log in.')
+    else:
+        print('GH CLI is not installed. Please install it from https://cli.github.com/')
+    
+
+    
+
+
+
