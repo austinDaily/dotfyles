@@ -12,11 +12,22 @@ Dotfyles is a command-line tool that scans your Home directory for your importan
 ### Prerequisites
 - Python3
 - Git
-- A GitHub account.
-- Make sure your GitHub account does not already contain a repo called "myDotfyles", as this program will overwrite it.
+- GitHub CLI
+```bash
+sudo apt install gh
+gh auth login
+```
+```bash
+sudo dnf install gh
+gh auth login
+```
+```bash
+sudo pacman -S github-cli
+gh auth login
+```
 
 ### Usage
 ```bash
-dotfyles init
+dotfyles --init
 ```
 This command will create a git repo in your Home directory called "myDotfyles", scan your Home directory for important configuration files/dirs, copy/symlink them to the "myDotfyles" repo, stage and commit them to Git, and finally push them to your GitHub.
