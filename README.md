@@ -27,6 +27,7 @@ gh auth login
 ```
 
 ### Install
+From your Home directory, run:
 ```bash
 gh repo clone austinDaily/dotfyles
 ```
