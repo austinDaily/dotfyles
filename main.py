@@ -17,7 +17,7 @@ if args.init:
 
     # Intitialize the git repository in the "dotfyles" directory
     print('Initializing the git repository...')
-    os.system('cd ~/dotfyles && git init')
+    os.system('cd ~/dotfyles && git init > /dev/null 2>&1')
     print('Done!')
 
     # List of config files and/or directories the program should search for
@@ -78,10 +78,10 @@ if args.init:
     
     # Add/stage the copied/symlinked files to the git repository
     print('Staging the config files to the git repo...')
-    os.system('cd ~/dotfyles && git add .')
+    os.system('cd ~/dotfyles && git add . > /dev/null 2>&1')
     print('Done!')
 
     # Commit the staged files
     print('Committing the config files...')
-    os.system('cd ~/dotfyles && git commit -m "Initial commit"')
+    os.system('cd ~/dotfyles && git commit -m "Initial commit" > /dev/null 2>&1')
     print('Done!')
